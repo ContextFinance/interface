@@ -1,6 +1,5 @@
 import { diffTokenLists, TokenList } from '@pangolindex/token-lists'
 import React, { useCallback, useMemo } from 'react'
-import ReactGA from 'react-ga'
 import { useDispatch } from 'react-redux'
 import { Text } from 'rebass'
 import { AppDispatch } from '../../state'
@@ -41,11 +40,6 @@ export default function ListUpdatePopup({
   const { t } = useTranslation()
   const handleAcceptUpdate = useCallback(() => {
     if (auto) return
-    ReactGA.event({
-      category: 'Lists',
-      action: 'Update List from Popup',
-      label: listUrl
-    })
     dispatch(acceptListUpdate(listUrl))
     removeThisPopup()
   }, [auto, dispatch, listUrl, removeThisPopup])
@@ -64,15 +58,15 @@ export default function ListUpdatePopup({
       <AutoColumn style={{ flex: '1' }} gap="8px">
         {auto ? (
           <TYPE.body fontWeight={500}>
-            {t('popups.tokenListUpdated', {"oldList": oldList.name})}{' '}
+            {t('popups.tokenListUpdated', { oldList: oldList.name })}{' '}
             <strong>{listVersionLabel(newList.version)}</strong>.
           </TYPE.body>
         ) : (
           <>
             <div>
               <Text>
-                {t('popups.updateAvailable', {"oldList": oldList.name})} (
-                {listVersionLabel(oldList.version)} to {listVersionLabel(newList.version)}).
+                {t('popups.updateAvailable', { oldList: oldList.name })} ({listVersionLabel(oldList.version)} to{' '}
+                {listVersionLabel(newList.version)}).
               </Text>
               <PopupUnorderedList>
                 {tokensAdded.length > 0 ? (
@@ -97,7 +91,11 @@ export default function ListUpdatePopup({
                     {t('popups.removed')}
                   </li>
                 ) : null}
-                {numTokensChanged > 0 ? <li>{numTokensChanged} {t('popups.tokensUpdated')}</li> : null}
+                {numTokensChanged > 0 ? (
+                  <li>
+                    {numTokensChanged} {t('popups.tokensUpdated')}
+                  </li>
+                ) : null}
               </PopupUnorderedList>
             </div>
             <AutoRow>

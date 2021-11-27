@@ -1,5 +1,4 @@
 import React, { HTMLProps, useCallback } from 'react'
-import ReactGA from 'react-ga'
 import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import { darken } from 'polished'
@@ -35,7 +34,7 @@ export const Button = styled.button.attrs<{ warning: boolean }, { backgroundColo
   }
 `
 
-export const CloseIcon = styled(X) <{ onClick: () => void }>`
+export const CloseIcon = styled(X)<{ onClick: () => void }>`
   cursor: pointer;
 `
 
@@ -120,9 +119,6 @@ export const PngTokenAnimated = styled.img`
   filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
 `
 
-/**
- * Outbound link that handles firing google analytics events
- */
 export function ExternalLink({
   target = '_blank',
   href,
@@ -133,15 +129,10 @@ export function ExternalLink({
     (event: React.MouseEvent<HTMLAnchorElement>) => {
       // don't prevent default, don't redirect if it's a new tab
       if (target === '_blank' || event.ctrlKey || event.metaKey) {
-        ReactGA.outboundLink({ label: href }, () => {
-          console.debug('Fired outbound link event', href)
-        })
+        window.open(href, '_blank')
       } else {
         event.preventDefault()
-        // send a ReactGA event and then trigger a location change
-        ReactGA.outboundLink({ label: href }, () => {
-          window.location.href = href
-        })
+        window.location.href = href
       }
     },
     [href, target]
@@ -175,7 +166,7 @@ export function BackArrow({ to }: { to: string }) {
   )
 }
 
-export const CustomLightSpinner = styled(Spinner) <{ size: string }>`
+export const CustomLightSpinner = styled(Spinner)<{ size: string }>`
   height: ${({ size }) => size};
   width: ${({ size }) => size};
 `

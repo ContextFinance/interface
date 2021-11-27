@@ -18,7 +18,6 @@ import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallbac
 import { ROUTER_ADDRESS } from '../../constants'
 import { calculateGasMargin, calculateSlippageAmount, getRouterContract } from '../../utils'
 import { BigNumber } from '@ethersproject/bignumber'
-import ReactGA from 'react-ga'
 import { wrappedCurrency } from '../../utils/wrappedCurrency'
 import TransactionConfirmationModal, { ConfirmationModalContent } from '../TransactionConfirmationModal'
 import { BlueCard, LightCard } from '../Card'
@@ -47,7 +46,12 @@ interface AddLiquidityModalProps {
   currencyIdB: string
 }
 
-export default function AddLiquidityModal({ isOpen, onDismiss, currencyIdA: _currencyIdA, currencyIdB: _currencyIdB }: AddLiquidityModalProps) {
+export default function AddLiquidityModal({
+  isOpen,
+  onDismiss,
+  currencyIdA: _currencyIdA,
+  currencyIdB: _currencyIdB
+}: AddLiquidityModalProps) {
   const { account, chainId, library } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
   const { t } = useTranslation()
@@ -197,12 +201,6 @@ export default function AddLiquidityModal({ isOpen, onDismiss, currencyIdA: _cur
           })
 
           setTxHash(response.hash)
-
-          ReactGA.event({
-            category: 'Liquidity',
-            action: 'Add',
-            label: [currencies[Field.CURRENCY_A]?.symbol, currencies[Field.CURRENCY_B]?.symbol].join('/')
-          })
         })
       )
       .catch(error => {
@@ -229,7 +227,10 @@ export default function AddLiquidityModal({ isOpen, onDismiss, currencyIdA: _cur
         </RowBetween>
         <Row>
           <Text fontSize="24px">
-            {currencies[Field.CURRENCY_A]?.symbol + '/' + currencies[Field.CURRENCY_B]?.symbol + t('addLiquidity.poolTokens')}
+            {currencies[Field.CURRENCY_A]?.symbol +
+              '/' +
+              currencies[Field.CURRENCY_B]?.symbol +
+              t('addLiquidity.poolTokens')}
           </Text>
         </Row>
         <TYPE.italic fontSize={12} textAlign="left" padding={'8px 0 0 0 '}>
@@ -369,7 +370,8 @@ export default function AddLiquidityModal({ isOpen, onDismiss, currencyIdA: _cur
               <LightCard padding="0px" borderRadius={'20px'}>
                 <RowBetween padding="1rem">
                   <TYPE.subHeader fontWeight={500} fontSize={14}>
-                    {noLiquidity ? t('addLiquidity.initialPrices') : t('addLiquidity.prices')} {t('addLiquidity.poolShare')}
+                    {noLiquidity ? t('addLiquidity.initialPrices') : t('addLiquidity.prices')}{' '}
+                    {t('addLiquidity.poolShare')}
                   </TYPE.subHeader>
                 </RowBetween>{' '}
                 <LightCard padding="1rem" borderRadius={'20px'}>
@@ -392,36 +394,36 @@ export default function AddLiquidityModal({ isOpen, onDismiss, currencyIdA: _cur
                 approvalA === ApprovalState.PENDING ||
                 approvalB === ApprovalState.NOT_APPROVED ||
                 approvalB === ApprovalState.PENDING) &&
-              isValid && (
-                <RowBetween>
-                  {approvalA !== ApprovalState.APPROVED && (
-                    <ButtonPrimary
-                      onClick={approveACallback}
-                      disabled={approvalA === ApprovalState.PENDING}
-                      width={approvalB !== ApprovalState.APPROVED ? '48%' : '100%'}
-                    >
-                      {approvalA === ApprovalState.PENDING ? (
-                        <Dots>Approving {currencies[Field.CURRENCY_A]?.symbol}</Dots>
-                      ) : (
-                        t('addLiquidity.approve') + currencies[Field.CURRENCY_A]?.symbol
-                      )}
-                    </ButtonPrimary>
-                  )}
-                  {approvalB !== ApprovalState.APPROVED && (
-                    <ButtonPrimary
-                      onClick={approveBCallback}
-                      disabled={approvalB === ApprovalState.PENDING}
-                      width={approvalA !== ApprovalState.APPROVED ? '48%' : '100%'}
-                    >
-                      {approvalB === ApprovalState.PENDING ? (
-                        <Dots>Approving {currencies[Field.CURRENCY_B]?.symbol}</Dots>
-                      ) : (
-                        t('addLiquidity.approve') + currencies[Field.CURRENCY_B]?.symbol
-                      )}
-                    </ButtonPrimary>
-                  )}
-                </RowBetween>
-              )}
+                isValid && (
+                  <RowBetween>
+                    {approvalA !== ApprovalState.APPROVED && (
+                      <ButtonPrimary
+                        onClick={approveACallback}
+                        disabled={approvalA === ApprovalState.PENDING}
+                        width={approvalB !== ApprovalState.APPROVED ? '48%' : '100%'}
+                      >
+                        {approvalA === ApprovalState.PENDING ? (
+                          <Dots>Approving {currencies[Field.CURRENCY_A]?.symbol}</Dots>
+                        ) : (
+                          t('addLiquidity.approve') + currencies[Field.CURRENCY_A]?.symbol
+                        )}
+                      </ButtonPrimary>
+                    )}
+                    {approvalB !== ApprovalState.APPROVED && (
+                      <ButtonPrimary
+                        onClick={approveBCallback}
+                        disabled={approvalB === ApprovalState.PENDING}
+                        width={approvalA !== ApprovalState.APPROVED ? '48%' : '100%'}
+                      >
+                        {approvalB === ApprovalState.PENDING ? (
+                          <Dots>Approving {currencies[Field.CURRENCY_B]?.symbol}</Dots>
+                        ) : (
+                          t('addLiquidity.approve') + currencies[Field.CURRENCY_B]?.symbol
+                        )}
+                      </ButtonPrimary>
+                    )}
+                  </RowBetween>
+                )}
               <ButtonError
                 onClick={() => {
                   expertMode ? onAdd() : setShowConfirm(true)
@@ -436,7 +438,6 @@ export default function AddLiquidityModal({ isOpen, onDismiss, currencyIdA: _cur
             </AutoColumn>
           )}
         </AutoColumn>
-
       </ContentWrapper>
     </Modal>
   )

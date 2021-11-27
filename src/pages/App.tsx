@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
-import GoogleAnalyticsReporter from '../components/analytics/GoogleAnalyticsReporter'
 import Header from '../components/Header'
 import Polling from '../components/Header/Polling'
 import URLWarning from '../components/Header/URLWarning'
@@ -80,7 +79,6 @@ export default function App() {
 
   return (
     <Suspense fallback={null}>
-      <Route component={GoogleAnalyticsReporter} />
       <Route component={DarkModeQueryParamReader} />
       <AppWrapper>
         <URLWarning />
@@ -98,14 +96,11 @@ export default function App() {
               <Route exact strict path="/swap" component={Swap} />
               <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
               <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
-              <Route exact strict path="/buy" component={Buy} />
               <Route exact strict path="/find" component={PoolFinder} />
               <Route exact strict path="/pool" component={Pool} />
               <Route exact strict path="/png/2" component={EarnV2} />
               <Route exact strict path="/png/:version" component={EarnV1} />
               <Route exact strict path="/stake/:version" component={Stake} />
-              <Route exact strict path="/vote" component={Vote} />
-              <Route exact strict path="/ido" component={IDO} />
               <Route exact strict path="/airdrop" component={Airdrop} />
               <Route exact strict path="/create" component={RedirectToAddLiquidity} />
               <Route exact path="/add" component={AddLiquidity} />

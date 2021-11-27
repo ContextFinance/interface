@@ -23,7 +23,6 @@ import Web3Status from '../Web3Status'
 import Modal from '../Modal'
 import PngBalanceContent from './PngBalanceContent'
 import usePrevious from '../../hooks/usePrevious'
-import { ANALYTICS_PAGE } from '../../constants'
 import LanguageSelection from '../LanguageSelection'
 import { ApplicationModal } from '../../state/application/actions'
 import { useModalOpen, useToggleModal } from '../../state/application/hooks'
@@ -322,9 +321,6 @@ export default function Header() {
           <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
             {t('header.swap')}
           </StyledNavLink>
-          <StyledNavLink id={`swap-nav-link`} to={'/buy'}>
-            {t('header.buy')}
-          </StyledNavLink>
           <StyledNavLink
             id={`pool-nav-link`}
             to={'/pool'}
@@ -339,41 +335,9 @@ export default function Header() {
             {t('header.pool')}
           </StyledNavLink>
 
-          <StyledLink
-            id={`png-nav-link`}
-            onClick={toggle}
-            isActive={location?.pathname?.startsWith('/png')}
-            ref={node as any}
-          >
-            {t('header.farm')} <ChevronDown size={24} />
-            {open && (
-              <NarrowMenuFlyout>
-                <MenuNavItem id="link" to={'/png/1'}>
-                  {t('header.version1')}
-                </MenuNavItem>
-                <MenuNavItem id="link" to={'/png/2'}>
-                  {t('header.version2')}
-                </MenuNavItem>
-              </NarrowMenuFlyout>
-            )}
-          </StyledLink>
-
-          <StyledNavLink
-            id={`stake-nav-link`}
-            to={'/stake/0'}
-            isActive={(match, { pathname }) => Boolean(match) || pathname.startsWith('/stake')}
-          >
-            {t('header.stake')}
-          </StyledNavLink>
-          <StyledNavLink id={`vote-nav-link`} to={'/vote'}>
+          {/* <StyledNavLink id={`vote-nav-link`} to={'/vote'}>
             {t('header.vote')}
-          </StyledNavLink>
-          <StyledExternalLink id={`info-nav-link`} href={ANALYTICS_PAGE}>
-            {t('header.charts')} <span style={{ fontSize: '11px' }}>↗</span>
-          </StyledExternalLink>
-          <StyledExternalLink id={`gov-nav-link`} href={'https://gov.pangolin.exchange'}>
-            {t('header.forum')} <span style={{ fontSize: '11px' }}>↗</span>
-          </StyledExternalLink>
+          </StyledNavLink> */}
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>

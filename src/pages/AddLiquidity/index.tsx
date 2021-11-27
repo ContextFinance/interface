@@ -3,7 +3,6 @@ import { TransactionResponse } from '@ethersproject/providers'
 import { Currency, currencyEquals, CAVAX, TokenAmount, WAVAX } from '@pangolindex/sdk'
 import React, { useCallback, useContext, useState } from 'react'
 import { Plus } from 'react-feather'
-import ReactGA from 'react-ga'
 import { RouteComponentProps } from 'react-router-dom'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'
@@ -200,12 +199,6 @@ export default function AddLiquidity({
           })
 
           setTxHash(response.hash)
-
-          ReactGA.event({
-            category: 'Liquidity',
-            action: 'Add',
-            label: [currencies[Field.CURRENCY_A]?.symbol, currencies[Field.CURRENCY_B]?.symbol].join('/')
-          })
         })
       )
       .catch(error => {
@@ -247,7 +240,10 @@ export default function AddLiquidity({
         </RowFlat>
         <Row>
           <Text fontSize="24px">
-            {currencies[Field.CURRENCY_A]?.symbol + '/' + currencies[Field.CURRENCY_B]?.symbol + t('addLiquidity.poolTokens')}
+            {currencies[Field.CURRENCY_A]?.symbol +
+              '/' +
+              currencies[Field.CURRENCY_B]?.symbol +
+              t('addLiquidity.poolTokens')}
           </Text>
         </Row>
         <TYPE.italic fontSize={12} textAlign="left" padding={'8px 0 0 0 '}>
@@ -383,7 +379,8 @@ export default function AddLiquidity({
                 <LightCard padding="0px" borderRadius={'20px'}>
                   <RowBetween padding="1rem">
                     <TYPE.subHeader fontWeight={500} fontSize={14}>
-                      {noLiquidity ? t('addLiquidity.initialPrices') : t('addLiquidity.prices')} {t('addLiquidity.poolShare')}
+                      {noLiquidity ? t('addLiquidity.initialPrices') : t('addLiquidity.prices')}{' '}
+                      {t('addLiquidity.poolShare')}
                     </TYPE.subHeader>
                   </RowBetween>{' '}
                   <LightCard padding="1rem" borderRadius={'20px'}>
