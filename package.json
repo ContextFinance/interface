@@ -1,6 +1,6 @@
 {
-  "name": "@pangolindex/interface",
-  "description": "Pangolin Interface",
+  "name": "@context.finance/interface",
+  "description": "Context Finance",
   "homepage": ".",
   "engines": {
     "node": ">=14.17.0"

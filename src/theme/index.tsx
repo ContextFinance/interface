@@ -35,6 +35,10 @@ const mediaWidthTemplates: { [width in keyof typeof MEDIA_WIDTHS]: typeof css } 
 const white = '#FFFFFF'
 const black = '#000000'
 
+const green = '#2dc28a'
+const blue = '#012043'
+const yellow = '#d3b04d'
+
 export function colors(darkMode: boolean): Colors {
   return {
     // base
@@ -64,11 +68,11 @@ export function colors(darkMode: boolean): Colors {
     advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
 
     //primary colors
-    primary1: darkMode ? '#2172E5' : '#FF6B00',
-    primary2: darkMode ? '#3680E7' : '#FF6B00',
-    primary3: darkMode ? '#4D8FEA' : '#FF6B00',
-    primary4: darkMode ? '#376bad70' : '#FF6B00',
-    primary5: darkMode ? '#153d6f70' : '#FF6B00',
+    primary1: darkMode ? '#2172E5' : green,
+    primary2: darkMode ? '#3680E7' : green,
+    primary3: darkMode ? '#4D8FEA' : green,
+    primary4: darkMode ? '#376bad70' : green,
+    primary5: darkMode ? '#153d6f70' : green,
     primary6: darkMode ? '#2172E5' : '#FFFFFF',
 
     // color text
@@ -92,7 +96,7 @@ export function colors(darkMode: boolean): Colors {
     // beta theme color
     color1: '#E67826',
     color2: '#707070',
-    color3: '#FF6B00'
+    color3: green
 
     // dont wanna forget these blue yet
     // blue4: darkMode ? '#153d6f70' : '#C4D9F8',
@@ -142,12 +146,12 @@ export function betaColors(darkMode: boolean): Colors {
     bg7: darkMode ? '#2C2D33' : '#FFFFFF',
 
     //primary colors
-    primary1: darkMode ? '#FF6B00' : '#FF6B00',
-    primary2: darkMode ? '#FF6B00' : '#FF6B00',
-    primary3: darkMode ? '#FF6B00' : '#FF6B00',
-    primary4: darkMode ? '#FF6B00' : '#FF6B00',
-    primary5: darkMode ? '#FF6B00' : '#FF6B00',
-    primary6: darkMode ? '#FF6B00' : '#FFFFFF',
+    primary1: darkMode ? green : green,
+    primary2: darkMode ? green : green,
+    primary3: darkMode ? green : green,
+    primary4: darkMode ? green : green,
+    primary5: darkMode ? green : green,
+    primary6: darkMode ? '#012043' : '#FFFFFF',
 
     // color text
     primaryText1: darkMode ? '#6da8ff' : '#ffffff',
@@ -157,7 +161,7 @@ export function betaColors(darkMode: boolean): Colors {
     secondary2: darkMode ? '#17000b26' : '#F6DDE8',
     secondary3: darkMode ? '#17000b26' : '#FDEAF1',
 
-    yellow2: '#FF6B00'
+    yellow2: '#012043'
   }
 }
 

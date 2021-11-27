@@ -1,6 +1,6 @@
 name = "pangolin-app-temp"
 type = "javascript"
-route = "app.pangolin.exchange/*"
+route = "context.finance/*"
 
 [site]
 bucket = "./build"

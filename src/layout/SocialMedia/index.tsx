@@ -2,13 +2,10 @@ import React from 'react'
 import { Text, Box } from '@pangolindex/components'
 import { useTranslation } from 'react-i18next'
 import { Wrapper, IconWrapper, Icon, Link } from './styled'
-import Telegram from '../../assets/svg/social/telegram.svg'
 import Twitter from '../../assets/svg/social/twitter.svg'
-import Youtube from '../../assets/svg/social/youtube.svg'
 import Medium from '../../assets/svg/social/medium.svg'
 import Github from '../../assets/svg/social/github.svg'
 import Discord from '../../assets/svg/social/discord.svg'
-import Substack from '../../assets/svg/social/substack.svg'
 
 interface SocialMediaProps {
   collapsed: boolean
@@ -19,22 +16,13 @@ export default function SocialMedia({ collapsed }: SocialMediaProps) {
 
   const socialLinks = [
     {
-      link: 'https://twitter.com/pangolindex',
+      link: 'https://twitter.com/ContextFinance',
       icon: Twitter,
       title: 'Twitter'
     },
+
     {
-      link: 'https://t.me/pangolindex',
-      icon: Telegram,
-      title: 'Telegram'
-    },
-    {
-      link: 'https://www.youtube.com/channel/UClJJTG4FRL4z3AOf-ZWXZLw',
-      icon: Youtube,
-      title: 'Youtube'
-    },
-    {
-      link: 'https://pangolindex.medium.com/',
+      link: 'https://contextfinance.medium.com/',
       icon: Medium,
       title: 'Medium'
     },
@@ -44,14 +32,9 @@ export default function SocialMedia({ collapsed }: SocialMediaProps) {
       title: 'Github'
     },
     {
-      link: 'https://discord.gg/PARrDYYbfw',
+      link: 'https://discord.gg/P9Jzt9pbxM',
       icon: Discord,
       title: 'Discord'
-    },
-    {
-      link: 'https://pangolin.substack.com/',
-      icon: Substack,
-      title: 'Substack'
     }
   ]
 

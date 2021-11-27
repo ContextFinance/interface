@@ -1,33 +1,31 @@
 import { ChainId, TokenAmount } from '@pangolindex/sdk'
-import React, { useState, useRef } from 'react'
-import { Text } from 'rebass'
-import { NavLink } from 'react-router-dom'
-import { useLocation } from 'react-router'
 import { darken } from 'polished'
+import React, { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ChevronDown } from 'react-feather'
+import { NavLink } from 'react-router-dom'
+import { Text } from 'rebass'
 import styled from 'styled-components'
-import Logo from '../../assets/svg/icon.svg'
-import LogoDark from '../../assets/svg/icon.svg'
-import { useActiveWeb3React } from '../../hooks'
-import { useDarkModeManager } from '../../state/user/hooks'
-import { useETHBalances, useAggregatePngBalance } from '../../state/wallet/hooks'
-import { CardNoise } from '../earn/styled'
 import { CountUp } from 'use-count-up'
-import { TYPE, ExternalLink } from '../../theme'
-import { RedCard } from '../Card'
-import Settings from '../Settings'
-import Menu from '../Menu'
-import Row, { RowFixed } from '../Row'
-import Web3Status from '../Web3Status'
-import Modal from '../Modal'
-import PngBalanceContent from './PngBalanceContent'
+import Logo from '../../assets/images/logo.png'
+import LogoDark from '../../assets/images/logo.png'
+import { useActiveWeb3React } from '../../hooks'
+import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import usePrevious from '../../hooks/usePrevious'
-import LanguageSelection from '../LanguageSelection'
 import { ApplicationModal } from '../../state/application/actions'
 import { useModalOpen, useToggleModal } from '../../state/application/hooks'
-import { MenuFlyout, MenuNavItem } from '../StyledMenu'
-import { useOnClickOutside } from '../../hooks/useOnClickOutside'
+import { useDarkModeManager } from '../../state/user/hooks'
+import { useAggregatePngBalance, useETHBalances } from '../../state/wallet/hooks'
+import { ExternalLink, TYPE } from '../../theme'
+import { RedCard } from '../Card'
+import { CardNoise } from '../earn/styled'
+import LanguageSelection from '../LanguageSelection'
+import Menu from '../Menu'
+import Modal from '../Modal'
+import Row, { RowFixed } from '../Row'
+import Settings from '../Settings'
+import { MenuFlyout } from '../StyledMenu'
+import Web3Status from '../Web3Status'
+import PngBalanceContent from './PngBalanceContent'
 
 const HeaderFrame = styled.div`
   display: grid;
@@ -132,7 +130,7 @@ const PNGAmount = styled(AccountElement)`
   height: 36px;
   font-weight: 500;
   background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #f97316 0%, #e84142 100%), #edeef2;
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 100%);
 `
 
 const PNGWrapper = styled.span`
@@ -194,9 +192,11 @@ const PngIcon = styled.div`
 `
 
 const activeClassName = 'ACTIVE'
+const disabled = false
 
 const StyledNavLink = styled(NavLink).attrs({
-  activeClassName
+  activeClassName,
+  disabled
 })`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: left;
@@ -209,6 +209,10 @@ const StyledNavLink = styled(NavLink).attrs({
   width: fit-content;
   margin: 0 12px;
   font-weight: 500;
+
+  &.${disabled} {
+    opacity: 0.5;
+  }
 
   &.${activeClassName} {
     border-radius: 12px;
@@ -290,8 +294,6 @@ export default function Header() {
   const { account, chainId } = useActiveWeb3React()
   const { t } = useTranslation()
 
-  const location: any = useLocation()
-
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [isDark] = useDarkModeManager()
 
@@ -314,7 +316,7 @@ export default function Header() {
       <HeaderRow>
         <Title href=".">
           <PngIcon>
-            <img width={'24px'} src={isDark ? LogoDark : Logo} alt="logo" />
+            <img width={'24px'} style={{ borderRadius: 100 }} src={isDark ? LogoDark : Logo} alt="logo" />
           </PngIcon>
         </Title>
         <HeaderLinks>
@@ -333,6 +335,12 @@ export default function Header() {
             }
           >
             {t('header.pool')}
+          </StyledNavLink>
+
+          <StyledNavLink id={`pool-nav-link`} to={`https://bond.context.finance`} disabled>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <span>Bond</span> <span style={{ fontSize: 12, marginLeft: 6 }}>(Coming soon)</span>
+            </div>
           </StyledNavLink>
 
           {/* <StyledNavLink id={`vote-nav-link`} to={'/vote'}>
