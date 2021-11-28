@@ -134,26 +134,26 @@ export default function Pool() {
               <RowBetween>
                 <TYPE.white fontSize={14}>{t('pool.liquidityProvidersEarn')}</TYPE.white>
               </RowBetween>
-              <ExternalLink
+              {/* <ExternalLink
                 style={{ color: 'white', textDecoration: 'underline' }}
                 target="_blank"
                 href={LiquidityTutorial}
               >
                 <TYPE.white fontSize={14}>{t('pool.readMoreProviding')}</TYPE.white>
-              </ExternalLink>
+              </ExternalLink> */}
             </AutoColumn>
           </CardSection>
           <CardBGImage />
           <CardNoise />
         </VoteCard>
 
-        <ExternalLink
+        {/* <ExternalLink
           style={{ marginTop: '1.5rem', color: 'black', textDecoration: 'underline' }}
           target="_blank"
           href={AccountAnalytics}
         >
           <TYPE.black fontSize={18}>{t('pool.viewStakedLiquidity')}</TYPE.black>
-        </ExternalLink>
+        </ExternalLink> */}
 
         <AutoColumn gap="lg" justify="center">
           <AutoColumn gap="lg" style={{ width: '100%' }}>
