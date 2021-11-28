@@ -8,7 +8,7 @@ An open source interface for Context -- a community-driven decentralized exchang
 
 ## Accessing the Context Interface
 
-Visit [pangolin.exchange](https://context.finance).
+Visit [context.finance](https://context.finance).
 
 ## Development
 
@@ -33,7 +33,7 @@ To have the interface default to a different network when a wallet is not connec
 3. Change `REACT_APP_NETWORK_URL` to your JSON-RPC provider
 
 Note that the interface only works on testnets where both
-[Pangolin](https://github.com/pangolindex/exchange-contracts) and
+[Context](https://github.com/context-finance/exchange-contracts) and
 [multicall](https://github.com/makerdao/multicall) are deployed.
 The interface will not work on other networks.
 
