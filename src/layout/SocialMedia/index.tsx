@@ -27,7 +27,7 @@ export default function SocialMedia({ collapsed }: SocialMediaProps) {
       title: 'Medium'
     },
     {
-      link: 'https://github.com/pangolindex',
+      link: 'https://github.com/ContextFinance',
       icon: Github,
       title: 'Github'
     },

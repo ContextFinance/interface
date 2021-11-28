@@ -51,11 +51,6 @@ export interface Migration {
   to: DoubleSideStaking
 }
 
-export interface BridgeMigrator {
-  aeb: string
-  ab: string
-}
-
 export interface StakingInfoBase {
   // the address of the reward contract
   stakingRewardAddress: string

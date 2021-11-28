@@ -33,10 +33,10 @@ To have the interface default to a different network when a wallet is not connec
 3. Change `REACT_APP_NETWORK_URL` to your JSON-RPC provider
 
 Note that the interface only works on testnets where both
-[Context](https://github.com/context-finance/exchange-contracts) and
+[Context](https://github.com/ContextFinance/exchange-contracts) and
 [multicall](https://github.com/makerdao/multicall) are deployed.
 The interface will not work on other networks.
 
 ## Attribution
 
-This code was adapted from this Pangolin repo: [pangolin-interface](https://github.com/pangolindex/interface).
+This code was adapted from this Pangolin repo: [pangolin-interface](https://github.com/ContextFinance/interface).

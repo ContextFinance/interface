@@ -17,7 +17,6 @@ import { PairState, usePair } from '../../data/Reserves'
 import StakingModal from '../../components/earn/StakingModal'
 import UnstakingModal from '../../components/earn/UnstakingModal'
 import Confetti from '../../components/Confetti'
-import BridgeMigratorModal from '../../components/earn/BridgeMigratorModal'
 import Loader from '../../components/Loader'
 import { ChainId, Token, WAVAX } from 'context-exchange-sdk'
 import { PNG } from '../../constants'
@@ -269,16 +268,6 @@ export default function Migrate({
           onDismiss={() => setShowUnstakingModal(false)}
           stakingInfo={stakingInfoFrom}
           version={Number(versionFrom)}
-        />
-      )}
-
-      {pglFrom && pglTo && (
-        <BridgeMigratorModal
-          isOpen={showMigrateModal}
-          onDismiss={() => setShowMigrateModal(false)}
-          pairFrom={pglFrom}
-          pairTo={pglTo}
-          userLiquidityUnstaked={pglFromBalance}
         />
       )}
 

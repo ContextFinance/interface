@@ -1,24 +1,22 @@
 import { Contract } from '@ethersproject/contracts'
 import { WAVAX } from 'context-exchange-sdk'
-import { abi as IPangolinPairABI } from '@pangolindex/exchange-contracts/artifacts/contracts/pangolin-core/interfaces/IPangolinPair.sol/IPangolinPair.json'
+import { abi as IContextPairABI } from 'context-exchange-contracts/artifacts/contracts/context-core/interfaces/IContextPair.sol/IContextPair.json'
 import { abi as STAKING_REWARDS_ABI } from '@pangolindex/governance/artifacts/contracts/StakingRewards.sol/StakingRewards.json'
 import { abi as AIRDROP_ABI } from '@pangolindex/governance/artifacts/contracts/Airdrop.sol/Airdrop.json'
 import { abi as GOVERNANCE_ABI } from '@pangolindex/governance/artifacts/contracts/GovernorAlpha.sol/GovernorAlpha.json'
 import { abi as PNG_ABI } from '@pangolindex/governance/artifacts/contracts/PNG.sol/Png.json'
-import { abi as BRIDGE_MIGRATOR_ABI } from '@pangolindex/exchange-contracts/artifacts/contracts/pangolin-periphery/PangolinBridgeMigrationRouter.sol/PangolinBridgeMigrationRouter.json'
 import { abi as MINICHEF_ABI } from '@pangolindex/governance/artifacts/contracts/MiniChefV2.sol/MiniChefV2.json'
 import { useMemo } from 'react'
 import ENS_PUBLIC_RESOLVER_ABI from '../constants/abis/ens-public-resolver.json'
 import { ERC20_BYTES32_ABI } from '../constants/abis/erc20'
 import ERC20_ABI from '../constants/abis/erc20.json'
 import BRIDGE_TOKEN_ABI from '../constants/abis/bridge-token.json'
-import { MIGRATOR_ABI, MIGRATOR_ADDRESS } from '../constants/abis/migrator'
 import WETH_ABI from '../constants/abis/weth.json'
 import { MULTICALL_ABI, MULTICALL_NETWORKS } from '../constants/multicall'
 import { V1_EXCHANGE_ABI, V1_FACTORY_ABI, V1_FACTORY_ADDRESSES } from '../constants/v1'
 import { getContract } from '../utils'
 import { useActiveWeb3React } from './index'
-import { AIRDROP_ADDRESS, BRIDGE_MIGRATOR_ADDRESS, MINICHEF_ADDRESS } from '../constants'
+import { AIRDROP_ADDRESS, MINICHEF_ADDRESS } from '../constants'
 import { GOVERNANCE_ADDRESS, PNG } from '../constants'
 
 // returns null on errors
@@ -41,16 +39,8 @@ export function useV1FactoryContract(): Contract | null {
   return useContract(chainId && V1_FACTORY_ADDRESSES[chainId], V1_FACTORY_ABI, false)
 }
 
-export function useV2MigratorContract(): Contract | null {
-  return useContract(MIGRATOR_ADDRESS, MIGRATOR_ABI, true)
-}
-
 export function useMiniChefContract(): Contract | null {
   return useContract(MINICHEF_ADDRESS, MINICHEF_ABI, true)
-}
-
-export function useBridgeMigratorContract(): Contract | null {
-  return useContract(BRIDGE_MIGRATOR_ADDRESS, BRIDGE_MIGRATOR_ABI, true)
 }
 
 export function useV1ExchangeContract(address?: string, withSignerIfPossible?: boolean): Contract | null {
@@ -79,7 +69,7 @@ export function useBytes32TokenContract(tokenAddress?: string, withSignerIfPossi
 }
 
 export function usePairContract(pairAddress?: string, withSignerIfPossible?: boolean): Contract | null {
-  return useContract(pairAddress, IPangolinPairABI, withSignerIfPossible)
+  return useContract(pairAddress, IContextPairABI, withSignerIfPossible)
 }
 
 export function useMulticallContract(): Contract | null {
