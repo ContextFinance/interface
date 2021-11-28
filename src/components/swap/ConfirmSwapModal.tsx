@@ -1,4 +1,4 @@
-import { currencyEquals, Trade } from '@pangolindex/sdk'
+import { currencyEquals, Trade } from 'context-exchange-sdk'
 import React, { useCallback, useMemo } from 'react'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,

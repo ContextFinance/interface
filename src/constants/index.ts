@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Percent, Token, WAVAX } from '@pangolindex/sdk'
+import { ChainId, JSBI, Percent, Token, WAVAX } from 'context-exchange-sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { injected, walletlink, walletconnect } from '../connectors'
@@ -7,7 +7,7 @@ export const GAS_PRICE = 225
 
 export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.FUJI]: '0x2D99ABD9008Dc933ff5c0CD271B88309593aB921',
-  [ChainId.AVALANCHE]: '0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106'
+  [ChainId.AVALANCHE]: '0xF533bcf74BE8a659Bab4133cDDC74A8670921549'
 }
 
 export const LANDING_PAGE = 'https://pangolin.exchange/'

@@ -1,5 +1,5 @@
 import { Contract } from '@ethersproject/contracts'
-import { WAVAX } from '@pangolindex/sdk'
+import { WAVAX } from 'context-exchange-sdk'
 import { abi as IPangolinPairABI } from '@pangolindex/exchange-contracts/artifacts/contracts/pangolin-core/interfaces/IPangolinPair.sol/IPangolinPair.json'
 import { abi as STAKING_REWARDS_ABI } from '@pangolindex/governance/artifacts/contracts/StakingRewards.sol/StakingRewards.json'
 import { abi as AIRDROP_ABI } from '@pangolindex/governance/artifacts/contracts/Airdrop.sol/Airdrop.json'
@@ -97,7 +97,11 @@ export function usePngContract(): Contract | null {
 }
 
 export function useStakingContract(stakingAddress?: string, withSignerIfPossible?: boolean): Contract | null {
-  return useContract(stakingAddress, stakingAddress === MINICHEF_ADDRESS ? MINICHEF_ABI : STAKING_REWARDS_ABI, withSignerIfPossible)
+  return useContract(
+    stakingAddress,
+    stakingAddress === MINICHEF_ADDRESS ? MINICHEF_ABI : STAKING_REWARDS_ABI,
+    withSignerIfPossible
+  )
 }
 
 export function useAirdropContract(): Contract | null {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Wrapper } from './styleds'
 import { Box, Button } from '@pangolindex/components'
-import { Pair, JSBI, TokenAmount } from '@pangolindex/sdk'
+import { Pair, JSBI, TokenAmount } from 'context-exchange-sdk'
 import PoolInfo from '../PoolInfo'
 import { StakingInfo } from '../../../state/stake/hooks'
 import { tryParseAmount } from '../../../state/swap/hooks'
@@ -99,10 +99,11 @@ const Stake = ({
     let stakingToken = stakingInfo?.stakedAmount?.token
     const parsedInput = tryParseAmount(stakingAmount, stakingToken) as TokenAmount
 
-    if (parsedInput
-      && stakingInfo?.stakedAmount
-      && JSBI.lessThanOrEqual(parsedInput.raw, userLiquidityUnstaked.raw)
-      && JSBI.greaterThan(parsedInput.raw, JSBI.BigInt(0))
+    if (
+      parsedInput &&
+      stakingInfo?.stakedAmount &&
+      JSBI.lessThanOrEqual(parsedInput.raw, userLiquidityUnstaked.raw) &&
+      JSBI.greaterThan(parsedInput.raw, JSBI.BigInt(0))
     ) {
       setIsValidAmount(true)
     } else {

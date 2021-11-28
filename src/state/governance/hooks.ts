@@ -1,5 +1,5 @@
 import { UNI } from './../../constants/index'
-import { TokenAmount } from '@pangolindex/sdk'
+import { TokenAmount } from 'context-exchange-sdk'
 import { isAddress } from 'ethers/lib/utils'
 import { useGovernanceContract, usePngContract } from '../../hooks/useContract'
 import { useSingleCallResult, useSingleContractMultipleData } from '../multicall/hooks'
@@ -58,9 +58,9 @@ export async function getBlockFromTimestamp(timestamp: number) {
     query: GET_BLOCK,
     variables: {
       timestampFrom: timestamp,
-      timestampTo: timestamp + 60 * 60 * 24 * 7,
+      timestampTo: timestamp + 60 * 60 * 24 * 7
     },
-    fetchPolicy: 'cache-first',
+    fetchPolicy: 'cache-first'
   })
   return result?.data?.blocks?.[0]?.number
 }
@@ -165,7 +165,6 @@ export function useAllProposalData() {
   if (formattedEvents && allProposals && allProposalStates) {
     allProposals.reverse()
     allProposalStates.reverse()
-
 
     return allProposals
       .filter((p, i) => {

@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { ChainId } from '@pangolindex/sdk'
+import { ChainId } from 'context-exchange-sdk'
 
 export interface SerializableTransactionReceipt {
   to: string

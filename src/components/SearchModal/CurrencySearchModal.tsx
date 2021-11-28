@@ -1,4 +1,4 @@
-import { Currency } from '@pangolindex/sdk'
+import { Currency } from 'context-exchange-sdk'
 import React, { useCallback, useEffect, useState } from 'react'
 import useLast from '../../hooks/useLast'
 import Modal from '../Modal'

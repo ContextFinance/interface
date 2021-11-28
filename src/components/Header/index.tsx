@@ -1,4 +1,4 @@
-import { ChainId, TokenAmount } from '@pangolindex/sdk'
+import { ChainId, TokenAmount } from 'context-exchange-sdk'
 import { darken } from 'polished'
 import React, { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'

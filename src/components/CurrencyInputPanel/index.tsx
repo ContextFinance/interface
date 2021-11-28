@@ -1,4 +1,4 @@
-import { Currency, Pair } from '@pangolindex/sdk'
+import { Currency, Pair } from 'context-exchange-sdk'
 import React, { useState, useContext, useCallback } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { darken } from 'polished'

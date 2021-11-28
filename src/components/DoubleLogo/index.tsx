@@ -1,4 +1,4 @@
-import { Currency } from '@pangolindex/sdk'
+import { Currency } from 'context-exchange-sdk'
 import React from 'react'
 import styled from 'styled-components'
 import CurrencyLogo from '../CurrencyLogo'

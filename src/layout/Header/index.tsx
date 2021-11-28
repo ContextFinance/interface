@@ -1,4 +1,4 @@
-import { ChainId, TokenAmount } from '@pangolindex/sdk'
+import { ChainId, TokenAmount } from 'context-exchange-sdk'
 import React, { useState, useRef } from 'react'
 import { useActiveWeb3React } from '../../hooks'
 import { useETHBalances, useAggregatePngBalance } from '../../state/wallet/hooks'
@@ -68,7 +68,6 @@ export default function Header({ onCollapsed }: HeaderProps) {
       </Modal>
 
       <MobileHeader>
-    
         <StyledMenuIcon onClick={() => onCollapsed()} />
         <MobileLogoWrapper>
           <Logo collapsed={false} />
