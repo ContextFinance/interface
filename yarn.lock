@@ -6534,22 +6534,22 @@ content-type@~1.0.4:
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
   integrity sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
 
-context-exchange-contracts@1.0.0, context-exchange-contracts@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/context-exchange-contracts/-/context-exchange-contracts-1.0.0.tgz#ca4a2d5af9106cf48ce01f0772ef3e19ebedaf75"
-  integrity sha512-bTGpyNrAat5AfGeUVliQlNMZa4aLtpvZQK99eoekWQefKu8I/NeSN+ygUJL4Kf+aFq9ovX6lJN+7M2SgMcl8MA==
+context-exchange-contracts@1.0.1, context-exchange-contracts@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/context-exchange-contracts/-/context-exchange-contracts-1.0.1.tgz#d551eb4ec425301639099a3987aeb53589f1b601"
+  integrity sha512-zfeLQrUztknmuaPxW+hFegFZTSUCZ/WFG8WKqfQK/1Iy55cW6yMjGmhH1YsQSt3JrNvXHDA1l8ruZ/Dhp8wQJg==
   dependencies:
     dotenv "^10.0.0"
     hardhat-tracer "^1.0.0-alpha.5"
 
-context-exchange-sdk@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/context-exchange-sdk/-/context-exchange-sdk-1.0.0.tgz#312a1536e53a98f3ceb54e5f75b908fa4fcf4245"
-  integrity sha512-7EZAKViGlqUH9GQE+dlJaj4eMLUdwC17fCXiNlC5nLOUCmqbDB/kyvU438r2m68IRLvIUuLji9PVFGip2C1NRw==
+context-exchange-sdk@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/context-exchange-sdk/-/context-exchange-sdk-1.0.4.tgz#0f1a4833ccb6e0eeeaa041cdaac84e22d6e378ad"
+  integrity sha512-Dgke/DuKbm6iqEpN2ITjEYJVYbR+8EM8xvYMFxu/5PWOMdluhCKzjBXDW/IZOHdeOR6cGOU3rzDG2U+T5WWXEQ==
   dependencies:
     "@openzeppelin/cli" "^2.8.2"
     big.js "^5.2.2"
-    context-exchange-contracts "^1.0.0"
+    context-exchange-contracts "^1.0.1"
     decimal.js-light "^2.5.0"
     jsbi "^3.1.1"
     tiny-invariant "^1.1.0"

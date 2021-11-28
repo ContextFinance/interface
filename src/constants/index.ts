@@ -7,7 +7,7 @@ export const GAS_PRICE = 225
 
 export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.FUJI]: '0x2D99ABD9008Dc933ff5c0CD271B88309593aB921',
-  [ChainId.AVALANCHE]: '0xF533bcf74BE8a659Bab4133cDDC74A8670921549'
+  [ChainId.AVALANCHE]: '0x27c8D4290EC9Aedac3A70F774F41B12F3e7b5F14'
 }
 
 export const LANDING_PAGE = 'https://pangolin.exchange/'
