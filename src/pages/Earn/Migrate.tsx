@@ -140,7 +140,7 @@ export default function Migrate({
             <CardSection>
               <AutoColumn gap="md">
                 <RowBetween>
-                  <TYPE.white fontWeight={600}>Step 1. Unstake Pangolin liquidity (PGL)</TYPE.white>
+                  <TYPE.white fontWeight={600}>Step 1. Unstake Context Liquidity (PGL)</TYPE.white>
                 </RowBetween>
                 {requiresUnstake && (
                   <>
@@ -169,7 +169,7 @@ export default function Migrate({
             <CardSection>
               <AutoColumn gap="md">
                 <RowBetween>
-                  <TYPE.white fontWeight={600}>Step 2. Convert Pangolin liquidity tokens (PGL)</TYPE.white>
+                  <TYPE.white fontWeight={600}>Step 2. Convert Context Liquidity tokens (PGL)</TYPE.white>
                 </RowBetween>
                 {requiresConvert && (
                   <>
@@ -207,7 +207,7 @@ export default function Migrate({
             <CardSection>
               <AutoColumn gap="md">
                 <RowBetween>
-                  <TYPE.white fontWeight={600}>Step 3. Stake Pangolin liquidity (PGL)</TYPE.white>
+                  <TYPE.white fontWeight={600}>Step 3. Stake Context Liquidity (PGL)</TYPE.white>
                 </RowBetween>
                 {requiresStake && (
                   <>
