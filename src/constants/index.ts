@@ -6,7 +6,7 @@ import { injected, walletlink, walletconnect } from '../connectors'
 export const GAS_PRICE = 225
 
 export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
-  [ChainId.FUJI]: '0x2D99ABD9008Dc933ff5c0CD271B88309593aB921',
+  [ChainId.FUJI]: '0x087e48D8afC7E637e4dc108c4868e3b0E1444F21',
   [ChainId.AVALANCHE]: '0x27c8D4290EC9Aedac3A70F774F41B12F3e7b5F14'
 }
 
