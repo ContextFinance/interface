@@ -14,6 +14,20 @@ export function useAllTokens(): { [address: string]: Token } {
   const userAddedTokens = useUserAddedTokens()
   const allTokens = useSelectedTokenList()
 
+  // if (Object.keys(allTokens[43113]).length === 0) {
+  //   // @ts-ignore
+  //   allTokens[43113] = {
+  //     [CTXT[43113].address]: CTXT[43113],
+  //     [DAIe[43113].address]: DAIe[43113],
+  //     [WAVAX[43113].address]: WAVAX[43113]
+  //   }
+  // }
+
+  // if (!allTokens[43114][CTXT[43114].address]) {
+  //   // @ts-ignore
+  //   allTokens[43114][CTXT[43114].address] = CTXT[43114]
+  // }
+
   return useMemo(() => {
     if (!chainId) return {}
     return (

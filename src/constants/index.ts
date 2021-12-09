@@ -3,6 +3,8 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { injected, walletlink, walletconnect } from '../connectors'
 
+export { WAVAX }
+
 export const GAS_PRICE = 225
 
 export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
@@ -27,6 +29,11 @@ type ChainTokenList = {
 export const PNG: { [chainId in ChainId]: Token } = {
   [ChainId.FUJI]: new Token(ChainId.FUJI, '0x83080D4b5fC60e22dFFA8d14AD3BB41Dde48F199', 18, 'PNG', 'Pangolin'),
   [ChainId.AVALANCHE]: new Token(ChainId.AVALANCHE, '0x60781C2586D68229fde47564546784ab3fACA982', 18, 'PNG', 'Pangolin')
+}
+
+export const CTXT: { [chainId in ChainId]: Token } = {
+  [ChainId.FUJI]: new Token(ChainId.FUJI, '0x27c8D4290EC9Aedac3A70F774F41B12F3e7b5F14', 18, 'CTXT', 'Context'),
+  [ChainId.AVALANCHE]: new Token(ChainId.AVALANCHE, '0x03bDBC5E96F07A9bA53d088C4Ca51B63cc973a28', 18, 'CTXT', 'Context')
 }
 
 export const ETH: { [chainId in ChainId]: Token } = {
@@ -117,7 +124,7 @@ export const DAI: { [chainId in ChainId]: Token } = {
 }
 
 export const DAIe: { [chainId in ChainId]: Token } = {
-  [ChainId.FUJI]: new Token(ChainId.FUJI, ZERO_ADDRESS, 18, 'DAI.e', 'Dai Stablecoin'),
+  [ChainId.FUJI]: new Token(ChainId.FUJI, '0x2BD483421917e8Df5bE01Fd40D3b64D4e3b9C87a', 18, 'DAI.e', 'Dai Stablecoin'),
   [ChainId.AVALANCHE]: new Token(
     ChainId.AVALANCHE,
     '0xd586E7F844cEa2F87f50152665BCbc2C279D8d70',
@@ -754,17 +761,17 @@ export const AIRDROP_ADDRESS: { [chainId in ChainId]?: string } = {
   [ChainId.AVALANCHE]: '0x0C58C2041da4CfCcF5818Bbe3b66DBC23B3902d9'
 }
 
-const WAVAX_AND_PNG_ONLY: ChainTokenList = {
-  [ChainId.FUJI]: [WAVAX[ChainId.FUJI], PNG[ChainId.FUJI]],
-  [ChainId.AVALANCHE]: [WAVAX[ChainId.AVALANCHE], PNG[ChainId.AVALANCHE]]
+const WAVAX_AND_CTXT_ONLY: ChainTokenList = {
+  [ChainId.FUJI]: [WAVAX[ChainId.FUJI], CTXT[ChainId.FUJI]],
+  [ChainId.AVALANCHE]: [WAVAX[ChainId.AVALANCHE], CTXT[ChainId.AVALANCHE]]
 }
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
-  [ChainId.FUJI]: [WAVAX[ChainId.FUJI], PNG[ChainId.FUJI]],
+  [ChainId.FUJI]: [WAVAX[ChainId.FUJI], CTXT[ChainId.FUJI], DAIe[ChainId.FUJI]],
   [ChainId.AVALANCHE]: [
     WAVAX[ChainId.AVALANCHE],
-    PNG[ChainId.AVALANCHE],
+    CTXT[ChainId.AVALANCHE],
     USDTe[ChainId.AVALANCHE],
     DAIe[ChainId.AVALANCHE],
     USDCe[ChainId.AVALANCHE]
@@ -781,12 +788,13 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
-  ...WAVAX_AND_PNG_ONLY
+  [ChainId.FUJI]: [...WAVAX_AND_CTXT_ONLY[ChainId.FUJI], DAIe[ChainId.FUJI]],
+  [ChainId.AVALANCHE]: [...WAVAX_AND_CTXT_ONLY[ChainId.AVALANCHE], DAIe[ChainId.AVALANCHE]]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
-  ...WAVAX_AND_PNG_ONLY
+  ...WAVAX_AND_CTXT_ONLY
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -795,7 +803,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
 
 // these tokens can be directly linked to (via url params) in the swap page without prompting a warning
 export const TRUSTED_TOKEN_ADDRESSES: { readonly [chainId in ChainId]: string[] } = {
-  [ChainId.FUJI]: [],
+  [ChainId.FUJI]: [WAVAX[ChainId.FUJI].address, CTXT[ChainId.FUJI].address],
   [ChainId.AVALANCHE]: [WAVAX[ChainId.AVALANCHE].address, PNG[ChainId.AVALANCHE].address]
 }
 
